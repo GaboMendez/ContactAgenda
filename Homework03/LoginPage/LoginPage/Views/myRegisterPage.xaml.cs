@@ -1,0 +1,23 @@
+﻿using LoginPage.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace LoginPage.Views
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class myRegisterPage : ContentPage
+	{
+		public myRegisterPage ()
+		{
+			InitializeComponent ();
+
+            BindingContext = new myRegisterPageViewModel();
+		}
+	}
+}
