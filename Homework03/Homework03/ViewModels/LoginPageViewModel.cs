@@ -33,7 +33,7 @@ namespace Homework03.ViewModels
                 else
                 {
                     Message = $"Welcome: {myUser.Matricula} !!";
-                    await Task.Delay(3000);
+                    await Task.Delay(2000);
                     await App.Current.MainPage.Navigation.PushAsync(new HomePage());
 
 

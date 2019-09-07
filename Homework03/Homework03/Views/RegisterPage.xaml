@@ -14,46 +14,34 @@
                     <StackLayout>
                         <!-- Place new controls here -->
                         <Image Source="logointec.png" 
-                           HeightRequest="100"
-                           WidthRequest="100"/>
+                               Style="{StaticResource logoIntec}"/>
 
                         <Entry Placeholder="Matricula" 
-                               HorizontalOptions="Fill" 
-                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource entryStyle}"
                                Text="{Binding myNewUser.Matricula}"/>
 
                         <Entry Placeholder="Name" 
-                               HorizontalOptions="Fill" 
-                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource entryStyle}"
                                Text="{Binding myNewUser.Name}"/>
 
                         <Entry Placeholder="Password" 
                                IsPassword="True"
-                               HorizontalOptions="Fill" 
-                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource entryStyle}"
                                Text="{Binding myNewUser.Password}"/>
 
                         <Entry Placeholder="Confirm Password" 
                                IsPassword="True"
-                               HorizontalOptions="Fill" 
-                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource entryStyle}"
                                Text="{Binding myNewUser.confirmPassword}"/>
 
                         <Button Text="Sign Up"
-                                VerticalOptions="CenterAndExpand"
+                                Style="{StaticResource buttonStyle}"
                                 HorizontalOptions="End"
-                                BackgroundColor="DarkRed"
-                                TextColor="White"
                                 BorderColor="Black"
-                                BorderRadius="4"
                                 Command="{Binding registerCommand}"/>
 
                         <Label Text="{Binding Message, Mode=TwoWay}"
-                               VerticalOptions="Center"
-                               HorizontalTextAlignment="Center"
-                               FontSize="Medium"
-                               TextColor="Red"
-                               FontAttributes="Bold"/>
+                               Style="{StaticResource errorLabel}"/>
 
 
                     </StackLayout>
