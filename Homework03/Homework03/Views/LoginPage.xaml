@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Homework03.Views.LoginPage"
+             BackgroundImage="background.jpg"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Spacing="2" Padding="1" VerticalOptions="Center" >
+                <Frame CornerRadius="15" >
+
+                    <StackLayout>
+                        <!-- Place new controls here -->
+                        <Image Source="logointec.png" 
+                        Style="{StaticResource logoIntec}"/>
+
+                        <Entry Placeholder="Matricula" 
+                               Style="{StaticResource entryStyle}"
+                               Text="{Binding myUser.Matricula}"/>
+
+                        <Entry Placeholder="Password" 
+                               IsPassword="True"
+                               Style="{StaticResource entryStyle}"
+                               Text="{Binding myUser.Password}"/>
+
+                        <Button Text="Login"
+                                Command="{Binding loginCommand}"
+                                Style="{StaticResource buttonStyle}"
+                                HorizontalOptions="End"/>
+
+                        
+                        <Label Text="{Binding Message, Mode=TwoWay}"
+                                Style="{StaticResource errorLabel}"/> 
+                        
+                                                     
+                        <Label Text="Don't have user yet?"
+                                Style="{StaticResource labelStyle}"/>
+
+                        <Label TextColor="Blue" Text="Sign Up!"  
+                                Style="{StaticResource sign_upLabel}">
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding goRegister}" CommandParameter="{Binding Model.LinkURL}"/>
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                    </StackLayout>
+
+                </Frame>
+
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

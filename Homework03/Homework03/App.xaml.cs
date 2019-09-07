@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homework03.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,11 @@ namespace Homework03
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage())
+            {
+                BarBackgroundColor = Color.Peru
+
+            };
         }
 
         protected override void OnStart()

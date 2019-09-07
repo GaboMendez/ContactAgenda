@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Homework03.Views.HomePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <MasterDetailPage.Master>
+        <ContentPage Padding="10" Title="Master" BackgroundColor="Gray">
+            <ContentPage.Content>
+                <StackLayout Spacing="2" Padding="1" VerticalOptions="Center">
+                    <!--<Label Text="" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="White"/>-->
+
+                    <Button Text="Home"
+                            BackgroundColor="DarkRed"
+                            TextColor="White"/>
+                    <Button Text="Option 1"
+                            BackgroundColor="DarkRed" 
+                            TextColor="White"/>
+                    <Button Text="Option 2"
+                            BackgroundColor="DarkRed"
+                            TextColor="White"/>
+
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Scroll to the ->" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Large"/>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+    <!--<ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>-->
+</MasterDetailPage>

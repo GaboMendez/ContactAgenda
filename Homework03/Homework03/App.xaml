@@ -3,6 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Homework03.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#c62828</Color>
+            <Color x:Key="primaryDark">#8e0000</Color>
+            <Color x:Key="primaryLight">#ff5f52</Color>
 
+            <Color x:Key="secondary">#757575</Color>
+            <Color x:Key="secondaryDark">#494949</Color>
+            <Color x:Key="secondaryLight">#a4a4a4</Color>
+
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="DarkRed" />
+                <Setter Property="BorderColor" Value="Black" />
+
+            </Style>
+
+            <Style x:Key="sign_upLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextDecorations" Value="Underline" />
+                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            
+
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="errorLabel" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="logoIntec" TargetType="Image" >
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
