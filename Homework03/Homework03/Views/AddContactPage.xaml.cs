@@ -1,4 +1,5 @@
-﻿using Homework03.ViewModels;
+﻿using Homework03.Models;
+using Homework03.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace Homework03.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : MasterDetailPage
+	public partial class AddContactPage : ContentPage
 	{
-		public HomePage ()
+		public AddContactPage (Contact contact)
 		{
 			InitializeComponent ();
-            BindingContext = new ContactHomePageViewModel();
-		}
+            BindingContext = new AddContactPageViewModel(contact);
+
+        }
 	}
 }

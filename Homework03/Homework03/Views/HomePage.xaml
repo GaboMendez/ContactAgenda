@@ -2,7 +2,8 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Homework03.Views.HomePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False">
 
     <MasterDetailPage.Master>
         <ContentPage Padding="10" Title="Master" BackgroundColor="Gray">
@@ -32,11 +33,61 @@
 
     <MasterDetailPage.Detail>
         <ContentPage Padding="10">
+            <ContentPage.ToolbarItems>
+                <ToolbarItem Command="{Binding CommandAdd}"
+                             Order="Primary" 
+                             Text="Add" 
+                             Priority="0"/>
+            </ContentPage.ToolbarItems>
+            
             <ContentPage.Content>
-                <StackLayout Margin="5,30,5,5">
-                    <Label Text="Scroll to the ->" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Large"/>
+                <StackLayout Spacing="2" Padding="1" VerticalOptions="Center" >
+                    <Label Text="Contact List!" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" Margin="30" TextColor="Black"/>
+                    
+                    <ListView ItemsSource="{Binding Contacts}"
+                              SelectedItem="{Binding selectedContact, Mode=TwoWay}"
+                              x:Name="contactList"
+                              VerticalOptions="Center" >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ImageCell Text="{Binding FirstName}"
+                                           TextColor="Black"
+                                           Detail="{Binding Phone}"
+                                           DetailColor="Gray"
+                                           ImageSource="{Binding Image}" >
+                                    
+                                    <ImageCell.ContextActions>
+                                        <MenuItem Text="More" 
+                                                  Command="{Binding Path=BindingContext.CommandMore, Source={x:Reference Name=contactList}}"
+                                                  CommandParameter="{Binding .}" />
+                                        <MenuItem Text="Delete" 
+                                                  IsDestructive="True"
+                                                  Command="{Binding Path=BindingContext.CommandDelete, Source={x:Reference Name=contactList}}"
+                                                  CommandParameter="{Binding .}"/>
+                                    </ImageCell.ContextActions>                                    
+                                </ImageCell>
+                                <!--<ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="More"/>
+                                        
+                                        <MenuItem Text="Delete"
+                                                  />
+                                        
+                                    </ViewCell.ContextActions>
+
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" >
+                                        <Image Source="{Binding Image}" HeightRequest="200" WidthRequest="200" />
+                                        <Label Text="{Binding FirstName}" FontSize="Large"  FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </ViewCell>-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
                 </StackLayout>
             </ContentPage.Content>
+            
         </ContentPage>
     </MasterDetailPage.Detail>
     <!--<ContentPage.Content>

@@ -8,9 +8,9 @@
             <Color x:Key="primaryDark">#8e0000</Color>
             <Color x:Key="primaryLight">#ff5f52</Color>
 
-            <Color x:Key="secondary">#757575</Color>
-            <Color x:Key="secondaryDark">#494949</Color>
-            <Color x:Key="secondaryLight">#a4a4a4</Color>
+            <Color x:Key="secondary">#d50000</Color>
+            <Color x:Key="secondaryDark">#9b0000</Color>
+            <Color x:Key="secondaryLight">#ff5131</Color>
 
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
