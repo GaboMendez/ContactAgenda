@@ -2,11 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Homework03.Views.AddContactPage">
+    
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+        <ScrollView>
+
+            <StackLayout Spacing="2" Padding="1" VerticalOptions="Center" >
+                <Image Source="{Binding PicturePath}"
+                       HeightRequest="200"/>
+                
+                <Entry  Placeholder="First Name" 
+                        Style="{StaticResource entryStyle}"
+                        Text="{Binding contact.FirstName}"/>
+
+                <Entry  Placeholder="Last Name" 
+                        Style="{StaticResource entryStyle}"
+                        Text="{Binding contact.LastName}"/>
+
+                <Entry  Placeholder="Phone Number" 
+                        Keyboard="Telephone"
+                        Style="{StaticResource entryStyle}"
+                        Text="{Binding contact.Phone}"/>
+
+                <Entry  Placeholder="Email" 
+                        Keyboard="Email"
+                        Style="{StaticResource entryStyle}"
+                        Text="{Binding contact.Email}"/>
+
+
+                <Button Text="Submit"
+                        Style="{StaticResource buttonStyle}"
+                        BorderColor="Black"
+                        BackgroundColor="DarkGreen"
+                        HorizontalOptions="End"
+                        Command="{Binding CommandAddContact}"/>
+
+                <Label  Text="{Binding Message, Mode=TwoWay}"
+                        Style="{StaticResource errorLabel}"/>
+
+
+
+            </StackLayout>
+            
+        </ScrollView>
+        
     </ContentPage.Content>
+
+    
 </ContentPage>

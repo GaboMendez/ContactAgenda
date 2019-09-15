@@ -14,11 +14,14 @@ namespace Homework03.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddContactPage : ContentPage
 	{
-		public AddContactPage (Contact contact)
+		public AddContactPage (Contact contact, bool updated)
 		{
 			InitializeComponent ();
-            BindingContext = new AddContactPageViewModel(contact);
+            BindingContext = new AddContactPageViewModel(contact, updated);
+            
 
         }
+
+
 	}
 }

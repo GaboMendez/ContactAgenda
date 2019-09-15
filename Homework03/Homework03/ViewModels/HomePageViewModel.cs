@@ -10,14 +10,15 @@ using Xamarin.Forms;
 
 namespace Homework03.ViewModels
 {
-    public class ContactHomePageViewModel : INotifyPropertyChanged
+    public class HomePageViewModel : INotifyPropertyChanged
     {
         public ICommand CommandMore { get; set; }
         public ICommand CommandDelete { get; set; }
         public ICommand CommandAdd { get; set; }
         public ObservableCollection<Contact> Contacts { get; set; } = new ObservableCollection<Contact>();
-        Contact _selectedContact;
-
+        public User myUser { get; set; }
+        private Contact _selectedContact;
+        
 
         public Contact selectedContact
         {
@@ -35,8 +36,9 @@ namespace Homework03.ViewModels
             }
         }
 
-        public ContactHomePageViewModel()
+        public HomePageViewModel(User user)
         {
+            myUser = user;
             CommandDelete = new Command<Contact>( async (contact) =>
             {
                 bool wantsDelete = await App.Current.MainPage.DisplayAlert("Delete Confirm", "Do you want to delete this item?", "Yes", "No");
@@ -59,15 +61,26 @@ namespace Homework03.ViewModels
                 if (result == edit)
                 {
 
-                    await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(contact));
+                    await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(contact, true));
                 }
             });
 
             CommandAdd = new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(_selectedContact));
-            });
+                MessagingCenter.Subscribe<AddContactPageViewModel, Contact>(this, "AddContact", ((sender, param) =>
+                {
+                    Contacts.Add(param);
+                    MessagingCenter.Unsubscribe<AddContactPageViewModel, Contact>(this, "AddContact");
+                }));
 
+                MessagingCenter.Subscribe<AddContactPageViewModel, Contact>(this, "UpdateList", ((sender, param) =>
+                {
+                    this.updateList();
+                }));
+
+                await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(new Contact(), false));
+            });
+            /*
             Contacts.Add(new Contact
             {
                 FirstName = "Gabriel",
@@ -75,7 +88,7 @@ namespace Homework03.ViewModels
                 Email = "gabomendez16@gmail.com",
                 Phone = "829-643-2322",
                 Image = "https://image.flaticon.com/icons/svg/109/109468.svg"
-            });
+            });*/
         }
     
         async void ContactDetails(Contact contact)
@@ -85,6 +98,11 @@ namespace Homework03.ViewModels
                          $"Email: {contact.Email}";
 
             await App.Current.MainPage.DisplayAlert("Details", msj, "Ok");
+
+        }
+
+        void updateList()
+        {
 
         }
 

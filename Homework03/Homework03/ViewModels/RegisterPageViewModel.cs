@@ -46,7 +46,7 @@ namespace Homework03.ViewModels
                 {
                     Message = "Your account has been successfully created";
                     await Task.Delay(3000);
-                    await App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    await App.Current.MainPage.Navigation.PushAsync(new HomePage(myNewUser));
                 }
             });
 

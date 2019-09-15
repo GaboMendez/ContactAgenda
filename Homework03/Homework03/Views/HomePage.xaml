@@ -39,11 +39,11 @@
                              Text="Add" 
                              Priority="0"/>
             </ContentPage.ToolbarItems>
-            
+
             <ContentPage.Content>
                 <StackLayout Spacing="2" Padding="1" VerticalOptions="Center" >
                     <Label Text="Contact List!" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Large" Margin="30" TextColor="Black"/>
-                    
+
                     <ListView ItemsSource="{Binding Contacts}"
                               SelectedItem="{Binding selectedContact, Mode=TwoWay}"
                               x:Name="contactList"
@@ -56,7 +56,7 @@
                                            Detail="{Binding Phone}"
                                            DetailColor="Gray"
                                            ImageSource="{Binding Image}" >
-                                    
+
                                     <ImageCell.ContextActions>
                                         <MenuItem Text="More" 
                                                   Command="{Binding Path=BindingContext.CommandMore, Source={x:Reference Name=contactList}}"
@@ -65,36 +65,16 @@
                                                   IsDestructive="True"
                                                   Command="{Binding Path=BindingContext.CommandDelete, Source={x:Reference Name=contactList}}"
                                                   CommandParameter="{Binding .}"/>
-                                    </ImageCell.ContextActions>                                    
+                                    </ImageCell.ContextActions>
                                 </ImageCell>
-                                <!--<ViewCell>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem Text="More"/>
-                                        
-                                        <MenuItem Text="Delete"
-                                                  />
-                                        
-                                    </ViewCell.ContextActions>
-
-                                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" >
-                                        <Image Source="{Binding Image}" HeightRequest="200" WidthRequest="200" />
-                                        <Label Text="{Binding FirstName}" FontSize="Large"  FontAttributes="Bold"/>
-                                    </StackLayout>
-                                </ViewCell>-->
                             </DataTemplate>
                         </ListView.ItemTemplate>
 
                     </ListView>
                 </StackLayout>
             </ContentPage.Content>
-            
+
         </ContentPage>
     </MasterDetailPage.Detail>
-    <!--<ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>-->
+    
 </MasterDetailPage>
