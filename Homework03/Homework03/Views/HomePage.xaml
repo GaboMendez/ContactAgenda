@@ -46,6 +46,9 @@
 
                     <ListView ItemsSource="{Binding Contacts}"
                               SelectedItem="{Binding selectedContact, Mode=TwoWay}"
+                              IsPullToRefreshEnabled="True"
+                              RefreshCommand="{Binding CommandRefresh}"
+                              IsRefreshing="{Binding IsRefreshing}"
                               x:Name="contactList"
                               VerticalOptions="Center" >
 

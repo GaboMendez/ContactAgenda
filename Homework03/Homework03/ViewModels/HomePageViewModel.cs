@@ -15,10 +15,11 @@ namespace Homework03.ViewModels
         public ICommand CommandMore { get; set; }
         public ICommand CommandDelete { get; set; }
         public ICommand CommandAdd { get; set; }
-        public ObservableCollection<Contact> Contacts { get; set; } = new ObservableCollection<Contact>();
+        public ICommand CommandRefresh { get; set; }
+
         public User myUser { get; set; }
-        private Contact _selectedContact;
-        
+        public ObservableCollection<Contact> Contacts { get; set; } = new ObservableCollection<Contact>();
+        private Contact _selectedContact;     
 
         public Contact selectedContact
         {
@@ -35,6 +36,18 @@ namespace Homework03.ViewModels
                 }
             }
         }
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
 
         public HomePageViewModel(User user)
         {
@@ -53,7 +66,7 @@ namespace Homework03.ViewModels
             {
                 string call = $"Call +{contact.Phone}";
                 string edit = "Edit";
-                string result = await App.Current.MainPage.DisplayActionSheet("Title", "Cancel", "Ok", call, edit);
+                string result = await App.Current.MainPage.DisplayActionSheet("Actions", "Cancel", "Ok", call, edit);
                 if (result == call)
                 {
                     Device.OpenUri(new Uri(String.Format("tel:{0}", contact.Phone)));
@@ -80,18 +93,19 @@ namespace Homework03.ViewModels
 
                 await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(new Contact(), false));
             });
-            /*
-            Contacts.Add(new Contact
+
+            CommandRefresh = new Command(() =>
             {
-                FirstName = "Gabriel",
-                LastName = "Mendez",
-                Email = "gabomendez16@gmail.com",
-                Phone = "829-643-2322",
-                Image = "https://image.flaticon.com/icons/svg/109/109468.svg"
-            });*/
+                IsRefreshing = true;
+
+                updateList();
+
+                IsRefreshing = false;
+            });
+
         }
     
-        async void ContactDetails(Contact contact)
+        private async void ContactDetails(Contact contact)
         {
             string msj = $"Name: {contact.FirstName} {contact.LastName} \n" +
                          $"Phone Number: {contact.Phone} \n" +
@@ -101,12 +115,24 @@ namespace Homework03.ViewModels
 
         }
 
-        void updateList()
+        private void updateList()
         {
+            Console.WriteLine();
+            this.Contacts = Contacts;
+            Console.WriteLine();
 
         }
 
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler  handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
 
     }
 }
