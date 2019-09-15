@@ -18,6 +18,8 @@ namespace Homework03.Views
 		{
 			InitializeComponent ();
             BindingContext = new HomePageViewModel(user);
-		}
-	}
+            Master.Icon = "ic_format_indent_increase.png";
+
+        }
+    }
 }

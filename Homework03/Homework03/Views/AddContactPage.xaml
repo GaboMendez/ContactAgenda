@@ -10,7 +10,10 @@
 
             <StackLayout Spacing="2" Padding="1" VerticalOptions="Center" >
                 <Image Source="{Binding PicturePath}"
-                       HeightRequest="200"/>
+                       BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                       HeightRequest="150"/>
+
+                <Button Command="{Binding CommandPictureFromMedia}" Text="Select Picture" HorizontalOptions="Center" TextColor="Black" BackgroundColor="DarkGoldenrod" BorderRadius="8" BorderWidth="2" BorderColor="Black" />
                 
                 <Entry  Placeholder="First Name" 
                         Style="{StaticResource entryStyle}"
@@ -30,6 +33,8 @@
                         Style="{StaticResource entryStyle}"
                         Text="{Binding contact.Email}"/>
 
+                <Label  Text="{Binding Message, Mode=TwoWay}"
+                        Style="{StaticResource errorLabel}"/>
 
                 <Button Text="Submit"
                         Style="{StaticResource buttonStyle}"
@@ -38,8 +43,7 @@
                         HorizontalOptions="End"
                         Command="{Binding CommandAddContact}"/>
 
-                <Label  Text="{Binding Message, Mode=TwoWay}"
-                        Style="{StaticResource errorLabel}"/>
+               
 
 
 

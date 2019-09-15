@@ -6,7 +6,7 @@
              NavigationPage.HasBackButton="False">
 
     <MasterDetailPage.Master>
-        <ContentPage Padding="10" Title="Master" BackgroundColor="Gray">
+        <ContentPage Padding="10" Title="Master" BackgroundColor="Gray" Icon="ic_format_indent_increase.png">
             <ContentPage.Content>
                 <StackLayout Spacing="2" Padding="1" VerticalOptions="Center">
                     <!--<Label Text="" 
@@ -54,7 +54,34 @@
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ImageCell Text="{Binding FirstName}"
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" />
+                                        <Label Text="{Binding FirstName}" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
+                                        <Label Text="| ~Number: "  TextColor="Gray" FontSize="Medium"  FontAttributes="Bold" />
+                                        <Label Text="{Binding Phone}" TextColor="Gray" FontSize="Medium" />
+
+                                        <!--<StackLayout Orientation="Vertical" Padding="0">
+                                            <Label Text="{Binding FirstName}" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
+                                            <Label Text="{Binding Phone}" TextColor="Gray" FontSize="Small"/>
+                                        </StackLayout>-->
+                                        
+                                    </StackLayout>
+                                    
+                                    <ViewCell.ContextActions>
+                                        <MenuItem Text="More" 
+                                                  Command="{Binding Path=BindingContext.CommandMore, Source={x:Reference Name=contactList}}"
+                                                  CommandParameter="{Binding .}" />
+                                        <MenuItem Text="Delete" 
+                                                  IsDestructive="True"
+                                                  Command="{Binding Path=BindingContext.CommandDelete, Source={x:Reference Name=contactList}}"
+                                                  CommandParameter="{Binding .}"/>
+                                    </ViewCell.ContextActions>
+                                    
+                                   
+
+                                </ViewCell>
+                                <!--<ImageCell Text="{Binding FirstName}"
                                            TextColor="Black"
                                            Detail="{Binding Phone}"
                                            DetailColor="Gray"
@@ -69,7 +96,7 @@
                                                   Command="{Binding Path=BindingContext.CommandDelete, Source={x:Reference Name=contactList}}"
                                                   CommandParameter="{Binding .}"/>
                                     </ImageCell.ContextActions>
-                                </ImageCell>
+                                </ImageCell>-->
                             </DataTemplate>
                         </ListView.ItemTemplate>
 

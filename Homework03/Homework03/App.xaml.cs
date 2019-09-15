@@ -14,7 +14,7 @@ namespace Homework03
 
             MainPage = new NavigationPage(new LoginPage())
             {
-                BarBackgroundColor = Color.Peru
+                BarBackgroundColor = Color.DarkGoldenrod
 
             };
         }
