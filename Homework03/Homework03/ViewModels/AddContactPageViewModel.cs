@@ -69,8 +69,6 @@ namespace Homework03.ViewModels
 
                     MessagingCenter.Send<AddContactPageViewModel, Contact>(this, "AddContact", contact);
 
-                    //MessagingCenter.Send<AddContactPageViewModel>(this, "UpdateList");
-
                     await Task.Delay(3000);
                     await App.Current.MainPage.Navigation.PopAsync();
                 }

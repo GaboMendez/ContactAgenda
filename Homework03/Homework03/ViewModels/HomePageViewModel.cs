@@ -84,13 +84,8 @@ namespace Homework03.ViewModels
                     Contacts.Add(param);
                     MessagingCenter.Unsubscribe<AddContactPageViewModel, Contact>(this, "AddContact");
                 }));
+
                 updateList();
-                /*
-                MessagingCenter.Subscribe<AddContactPageViewModel, Contact>(this, "UpdateList", ((sender, param) =>
-                {
-                    this.updateList();
-                }));
-                */
 
                 await App.Current.MainPage.Navigation.PushAsync(new AddContactPage(new Contact(), false));
             });

@@ -50,17 +50,20 @@
                               RefreshCommand="{Binding CommandRefresh}"
                               IsRefreshing="{Binding IsRefreshing}"
                               x:Name="contactList"
-                              VerticalOptions="Center" >
+                              VerticalOptions="Center"
+                              HasUnevenRows="True">
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100" />
-                                        <Label Text="{Binding FirstName}" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
-                                        <Label Text="| ~Number: "  TextColor="Gray" FontSize="Medium"  FontAttributes="Bold" />
-                                        <Label Text="{Binding Phone}" TextColor="Gray" FontSize="Medium" />
-
+                                        <Image Source="{Binding Image}" HeightRequest="150" WidthRequest="150" />
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding FirstName}" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
+                                            <Label Text="| ~Number: "  TextColor="Gray" FontSize="Medium"  FontAttributes="Bold" />
+                                            <Label Text="{Binding Phone}" TextColor="Gray" FontSize="Medium" />
+                                        </StackLayout>
+                                        
                                         <!--<StackLayout Orientation="Vertical" Padding="0">
                                             <Label Text="{Binding FirstName}" TextColor="Black" FontSize="Medium"  FontAttributes="Bold"/>
                                             <Label Text="{Binding Phone}" TextColor="Gray" FontSize="Small"/>
